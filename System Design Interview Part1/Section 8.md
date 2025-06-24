@@ -88,7 +88,5 @@ URL : https://en.wikipedia.org/wiki/Systems_design
     SHA-1 : 0eeae7916c06853901d9ccbefbfcaf4de57ed85b
     ```
     > CRC32가 계산한 가장 짧은 해시값도 7보다는 길다.  
-    이를 해결할 방법은 다음과 같다.
 
-    * 계산된 해시 값에서 처음 7개 글자만 이용하는 것 : 해시 충돌 확률이 올라간다. 따라서 충돌이 발생하면 해소하는 작업이 필요하다. 
-  
+#### base-62 변환
