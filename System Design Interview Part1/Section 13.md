@@ -23,4 +23,21 @@
 개략적으로 보면 시스템은 두 부분으로 나뉜다.
 ### 데이터 수집 서비스
 ![simple](../image/13-2.png)
-질의문과 사용빈도를 저ㅇ
+질의문과 사용빈도를 저장하는 빈도 테이블이 있다고 가정.
+처음에는 비어있지만 사용자가 'twitch', 'twitter', 'twitter', 'twillo'를 순서대로 검색하면 그 상태가 위 그림과 같이 바뀌어 나가게 된다.
+### 질의 서비스
+![simple](../image/t13-1.png)
+* query : 질의문을 저장하는 필드
+* frequency : 질의문의 사용된 빈도를 저장하는 필드
+이 상태에서 사용자가 "tw"를 검색창에 입력하면 아래의 "top 5" 자동완성 검색어가 표시되어야 한다.
+"top 5"는 위의 빈도 테이블에 기록된 수치를 사용해 계산한다고 가정한다.
+
+![simple](../image/13-3.png)
+
+가장 많이 사용된 5개의 검색어는 SQL 질의문을 사용해 계산할 수 있다.
+~~~shell
+SELECT * FROM frequency_table
+WHERE query Like `prefix%`
+ORDER BY frequency DESC
+LIMIT 5
+~~~
